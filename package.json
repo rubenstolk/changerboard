@@ -16,10 +16,11 @@
   "dependencies":{
     "forever": "~0.11.1",
     "atlasboard": "latest",
-    "underscore": "1.4.2",
-    "cheerio": "0.10.5",
-    "ical": "~0.0.3",
-    "github": "latest"
+    "lodash": "latest",
+    "async": "latest",
+    "cheerio": "latest",
+    "octonode": "latest",
+    "googleapis": "latest"
   },
   "devDependencies": {
     "nodemon": "latest"
