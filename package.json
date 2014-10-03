@@ -1,9 +1,9 @@
 {
   "private":true,
   "license":"Apache License, Version 2.0",
-  "author":"AtlasBoard",
-  "name":"your-dashboard-name-here",
-  "description":"A dashboard built for AtlasBoard",
+  "author":"Changer",
+  "name":"changerboard",
+  "description":"ChangerBoard based on AtlasBoard",
   "version":"0.0.1",
   "homepage":"",
   "repository":{
@@ -14,10 +14,16 @@
     "node":">=0.8"
   },
   "dependencies":{
-
+    "atlasboard": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "latest",
+    "jshint": "latest",
+    "jscs": "latest",
+    "precommit-hook": "latest"
   },
   "scripts":{
-    "start":"atlasboard start",
-    "test": "find ./ -name '*.js' | grep test/ | xargs mocha"
+    "start": "nodemon server.js",
+    "lint": "jshint . && jscs ."
   }
 }
