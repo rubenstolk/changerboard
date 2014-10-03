@@ -8,13 +8,14 @@ global.async = require('async');
    because atlasboard isn't configurable in any other way */
 var globalAuth;
 try {
-  globalAuth = JSON.parse(process.env.GLOBAL_AUTH || '{}');
-  fs.writeFileSync('./globalAuth.json', JSON.stringify(globalAuth));
+  globalAuth = JSON.stringify(JSON.parse(process.env.GLOBAL_AUTH || '{}'));
+  fs.writeFileSync('./globalAuth.json', globalAuth);
 }
 catch(e) {
   console.log(e);
-  globalAuth = {}
+  globalAuth = {};
 }
+fs.unlink('./globalAuth.json');
 
 /* This is a nasty hack to hijack into the express middlewares
    because atlasboard doesn't expose express */
@@ -35,7 +36,6 @@ if (globalAuth.basic && globalAuth.basic.username && globalAuth.basic.password) 
 // Start atlasboard server
 var atlasboard = require('./node_modules/atlasboard/lib/atlasboard');
 atlasboard({ port: process.env.PORT || 5000 }, function (err) {
-  fs.unlink('./globalAuth.json');
   if (err) {
     console.log(err);
   }
