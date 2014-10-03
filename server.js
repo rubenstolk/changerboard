@@ -6,12 +6,15 @@ global.async = require('async');
 
 /* This is a nasty hack to overwrite globalAuth.json with environment variables
    because atlasboard isn't configurable in any other way */
-var globalAuth = {};
+var globalAuth;
 try {
   globalAuth = JSON.parse(process.env.GLOBAL_AUTH || '{}');
   fs.writeFileSync('./globalAuth.json', JSON.stringify(globalAuth));
 }
-catch(e) {}
+catch(e) {
+  console.log(e);
+  globalAuth = {}
+}
 
 /* This is a nasty hack to hijack into the express middlewares
    because atlasboard doesn't expose express */
