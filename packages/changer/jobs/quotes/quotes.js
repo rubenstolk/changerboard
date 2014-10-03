@@ -1,5 +1,3 @@
-var _ = require('underscore');
-
 module.exports = function(config, dependencies, job_callback) {
     var quotes = config.quotes;
     quotes = _.shuffle(quotes);
