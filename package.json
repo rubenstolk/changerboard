@@ -14,16 +14,13 @@
     "node":">=0.8"
   },
   "dependencies":{
+    "forever": "~0.11.1",
     "atlasboard": "latest"
   },
   "devDependencies": {
-    "nodemon": "latest",
-    "jshint": "latest",
-    "jscs": "latest",
-    "precommit-hook": "latest"
+    "nodemon": "latest"
   },
   "scripts":{
-    "start": "nodemon server.js",
-    "lint": "jshint . && jscs ."
+    "start": "nodemon server.js"
   }
 }
