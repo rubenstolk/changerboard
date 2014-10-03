@@ -15,7 +15,7 @@ catch(e) {}
 
 /* This is a nasty hack to hijack into the express middlewares
    because atlasboard doesn't expose express */
-var express = require('./node_modules/atlasboard/node_modules/express');
+/*var express = require('./node_modules/atlasboard/node_modules/express');
 var methodOverride = express.methodOverride;
 express.__defineGetter__('methodOverride', function () {
   return function (key) {
@@ -28,7 +28,7 @@ express.__defineGetter__('methodOverride', function () {
       return methodOverride(key)(req, res, next);
     };
   };
-});
+});*/
 
 // Start atlasboard server
 var atlasboard = require('./node_modules/atlasboard/lib/atlasboard');
