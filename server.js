@@ -12,24 +12,15 @@ try {
   fs.writeFileSync('./globalAuth.json', JSON.stringify(globalAuth));
 }
 catch(e) {
+  globalAuth = {};
   console.log(e);
-  globalAuth = {}
 }
+
+console.log('AAA', globalAuth);
 
 /* This is a nasty hack to hijack into the express middlewares
    because atlasboard doesn't expose express */
 if (globalAuth.basic && globalAuth.basic.username && globalAuth.basic.password) {
-  var express = require('./node_modules/atlasboard/node_modules/express');
-  var methodOverride = express.methodOverride;
-  express.__defineGetter__('methodOverride', function () {
-    return function (key) {
-      return function (req, res, next) {
-        return express.basicAuth(globalAuth.basic.username, globalAuth.basic.password)(req, res, function () {
-          return methodOverride(key)(req, res, next);
-        });
-      };
-    };
-  });
 }
 
 // Start atlasboard server
